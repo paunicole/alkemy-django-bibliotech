@@ -1,0 +1,11 @@
+# Archivos y directorios generados por Django
+__pycache__/
+*.pyc
+db.sqlite3
+
+# Directorio virtualenv
+venv/
+
+# Archivos de configuración locales
+.env
+settings_local.py
