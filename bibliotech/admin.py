@@ -7,21 +7,24 @@ from .models.book import Book
 
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
-    list_display = [("first_name", "last_name"), "nationality", "is_active"]
+    fields = [("first_name", "last_name"), "nationality", "is_active"]
+    list_display = ["first_name", "last_name", "nationality", "is_active"]
     search_fields = ["first_name", "last_name"]
     list_filter = ["is_active", "nationality"]
 
 
 @admin.register(Employee)
 class EmployeeAdmin(admin.ModelAdmin):
-    list_display = [("first_name", "last_name"), "file_number", "is_active"]
+    fields = [("first_name", "last_name"), "file_number", "is_active"]
+    list_display = ["first_name", "last_name", "file_number", "is_active"]
     search_fields = ["first_name", "last_name"]
     list_filter = ["is_active"]
 
 
 @admin.register(Member)
 class MemberAdmin(admin.ModelAdmin):
-    list_display = [("first_name", "last_name"), "birth_date", "is_active"]
+    fields = [("first_name", "last_name"), "birth_date", "is_active"]
+    list_display = ["first_name", "last_name", "birth_date", "is_active"]
     search_fields = ["first_name", "last_name"]
     list_filter = ["is_active"]
 
