@@ -3,6 +3,7 @@ from .models.author import Author
 from .models.employee import Employee
 from .models.member import Member
 from .models.book import Book
+from .models.lendbook import LendBook
 
 
 @admin.register(Author)
@@ -34,3 +35,9 @@ class BookAdmin(admin.ModelAdmin):
     list_display = ["title", "description", "isbn", "author", "is_active"]
     search_fields = ["title"]
     list_filter = ["is_active"]
+
+
+@admin.register(LendBook)
+class LendBookAdmin(admin.ModelAdmin):
+    list_display = ["lend_date", "return_date", "member", "book", "employee"]
+    search_fields = ["member", "book", "employee"]
