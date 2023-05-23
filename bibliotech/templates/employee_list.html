@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Número de legajo</th>
+            <th>Activo</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for employee in employees %}
+        <tr>
+            <td>{{ employee.first_name }}</td>
+            <td>{{ employee.last_name }}</td>
+            <td>{{ employee.file_number }}</td>
+            {% if employee.is_active %}
+            <td>✅</td>
+            {% else %}
+            <td>❌</td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
