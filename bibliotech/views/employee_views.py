@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from ..models.employee import Employee
 from ..forms.employee_form import EmployeeForm
 
@@ -23,3 +23,17 @@ def employee_create(request):
             form.save()
             return redirect("employee-list")
     return render(request, "employee_form.html", context)
+
+
+def employee_disable(request, pk):
+    employee = get_object_or_404(Employee, pk=pk)
+    employee.is_active = False
+    employee.save()
+    return redirect("employee-list")
+
+
+def employee_enable(request, pk):
+    employee = get_object_or_404(Employee, pk=pk)
+    employee.is_active = True
+    employee.save()
+    return redirect("employee-list")
