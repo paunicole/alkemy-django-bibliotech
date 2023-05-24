@@ -16,5 +16,5 @@ def employee_form(request):
         form = EmployeeForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("employee_list")
+            return redirect("employee-list")
     return render(request, "employee_form.html", context)
