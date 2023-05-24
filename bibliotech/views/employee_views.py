@@ -28,6 +28,12 @@ def employee_create(request):
 def employee_update(request, employee_id):
     employee = Employee.objects.get(id=employee_id)
     form = EmployeeForm(instance=employee)
+    context = {
+        "form": form,
+        "submit": "Modificar",
+        "title": "Modificar Empleado",
+        "action": "btn-warning",
+    }
 
     if request.method == "POST":
         form = EmployeeForm(request.POST, instance=employee)
@@ -38,10 +44,5 @@ def employee_update(request, employee_id):
     return render(
         request,
         "employee_form.html",
-        {
-            "form": form,
-            "submit": "Modificar",
-            "title": "Modificar Empleado",
-            "action": "btn-warning",
-        },
+        context,
     )
