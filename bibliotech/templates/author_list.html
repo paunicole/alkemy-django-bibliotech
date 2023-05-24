@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load countries %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'flags/sprite-hq.css' %}">
+<style>
+    .flag-cell {
+        display: flex;
+        align-items: center;
+    }
+
+    .flag-icon {
+        margin-right: 10px;
+    }
+
+    .center {
+        margin-top: -7px;
+    }
+</style>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Nacionalidad</th>
+            <th>Activo</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for author in authors %}
+        <tr>
+            <td>{{ author.first_name }}</td>
+            <td>{{ author.last_name }}</td>
+            <td class="flag-cell">
+                <div class="flag-icon">
+                    <i class="flag2x {{ author.nationality.flag_css }}"></i>
+                </div>
+                <div class="center">{{ author.nationality.name }}</div>
+            </td>
+            {% if author.is_active %}
+            <td>✅</td>
+            {% else %}
+            <td>❌</td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
