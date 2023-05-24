@@ -19,14 +19,17 @@ def author_list(request):
     return render(request, "author_list.html", context)
 
 
-def author_form(request):
+def author_create(request):
     form = AuthorForm()
     context = {
         "form": form,
+        "submit": "Crear",
+        "title": "Crear Autor",
+        "action": "btn-primary",
     }
     if request.method == "POST":
         form = AuthorForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("author_list")
+            return redirect("author-list")
     return render(request, "author_form.html", context)

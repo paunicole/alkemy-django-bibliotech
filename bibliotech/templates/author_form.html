@@ -3,6 +3,6 @@
 <form action="#" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Guardar">
+    <input type="submit" class="btn {{ action }}" value="{{ submit }}">
 </form>
 {% endblock %}
