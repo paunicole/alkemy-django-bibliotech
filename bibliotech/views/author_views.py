@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from ..models.author import Author
-from ..forms import AuthorForm
+from ..forms.author_form import AuthorForm
 
 
 def author_view(request, id):
@@ -33,3 +33,26 @@ def author_create(request):
             form.save()
             return redirect("author-list")
     return render(request, "author_form.html", context)
+
+
+def author_update(request, author_id):
+    author = Author.objects.get(id=author_id)
+    form = AuthorForm(instance=author)
+    context = {
+        "form": form,
+        "submit": "Modificar",
+        "title": "Modificar Autor",
+        "action": "btn-warning",
+    }
+
+    if request.method == "POST":
+        form = AuthorForm(request.POST, instance=author)
+        if form.is_valid():
+            form.save()
+            return redirect("author-list")
+
+    return render(
+        request,
+        "author_form.html",
+        context,
+    )
