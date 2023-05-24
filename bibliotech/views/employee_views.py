@@ -25,6 +25,29 @@ def employee_create(request):
     return render(request, "employee_form.html", context)
 
 
+def employee_update(request, employee_id):
+    employee = Employee.objects.get(id=employee_id)
+    form = EmployeeForm(instance=employee)
+    context = {
+        "form": form,
+        "submit": "Modificar",
+        "title": "Modificar Empleado",
+        "action": "btn-warning",
+    }
+
+    if request.method == "POST":
+        form = EmployeeForm(request.POST, instance=employee)
+        if form.is_valid():
+            form.save()
+            return redirect("employee-list")
+
+    return render(
+        request,
+        "employee_form.html",
+        context,
+    )
+
+
 def employee_disable(request, pk):
     employee = get_object_or_404(Employee, pk=pk)
     employee.is_active = False
