@@ -9,9 +9,14 @@ def employee_list(request):
     return render(request, "employee_list.html", context)
 
 
-def employee_form(request):
+def employee_create(request):
     form = EmployeeForm()
-    context = {"form": form}
+    context = {
+        "form": form,
+        "submit": "Crear",
+        "title": "Crear Empleado",
+        "action": "btn-primary",
+    }
     if request.method == "POST":
         form = EmployeeForm(request.POST)
         if form.is_valid():
