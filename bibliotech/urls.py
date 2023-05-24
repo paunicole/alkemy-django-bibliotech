@@ -6,12 +6,17 @@ urlpatterns = [
     path("employee/new", employee_views.employee_create, name="employee-create"),
     path("employee-list", employee_views.employee_list, name="employee-list"),
     path(
-        "employee/disable/<int:pk>",
+        "employee/update/<str:employee_id>",
+        employee_views.employee_update,
+        name="employee-update",
+    ),
+    path(
+        "employee/disable/<str:pk>",
         employee_views.employee_disable,
         name="employee-disable",
     ),
     path(
-        "employee/enable/<int:pk>",
+        "employee/enable/<str:pk>",
         employee_views.employee_enable,
         name="employee-enable",
     ),
