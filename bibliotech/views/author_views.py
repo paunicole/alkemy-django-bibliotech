@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from ..models.author import Author
 from ..forms.author_form import AuthorForm
 
@@ -56,3 +56,17 @@ def author_update(request, author_id):
         "author_form.html",
         context,
     )
+
+
+def author_disable(request, pk):
+    author = get_object_or_404(Author, pk=pk)
+    author.is_active = False
+    author.save()
+    return redirect("author-list")
+
+
+def author_enable(request, pk):
+    author = get_object_or_404(Author, pk=pk)
+    author.is_active = True
+    author.save()
+    return redirect("author-list")
