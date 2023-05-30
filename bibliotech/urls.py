@@ -20,4 +20,21 @@ urlpatterns = [
         employee_views.employee_enable,
         name="employee-enable",
     ),
+    path("author/new", author_views.author_create, name="author-create"),
+    path("author-list", author_views.author_list, name="author-list"),
+    path(
+        "author/update/<str:author_id>",
+        author_views.author_update,
+        name="author-update",
+    ),
+    path(
+        "author/disable/<str:pk>",
+        author_views.author_disable,
+        name="author-disable",
+    ),
+    path(
+        "author/enable/<str:pk>",
+        author_views.author_enable,
+        name="author-enable",
+    ),
 ]
