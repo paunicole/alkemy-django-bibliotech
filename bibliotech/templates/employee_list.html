@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<a href="{% url 'employee-create' %}" class="btn btn-primary" style="margin-bottom: 10px;">Añadir Empleado</a>
+
 <table class="table table-striped">
     <thead>
         <tr>
@@ -8,6 +10,7 @@
             <th>Apellido</th>
             <th>Número de legajo</th>
             <th>Activo</th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -21,6 +24,16 @@
             {% else %}
             <td>❌</td>
             {% endif %}
+            <td style="display: flex; justify-content: space-between;">
+                <div style="margin-right: -64px;">
+                    {% if employee.is_active %}
+                    <a href="{% url 'employee-disable' employee.id %}" class="btn btn-danger" style="padding: 4px 8px;">Desactivar</a>
+                    {% else %}
+                    <a href="{% url 'employee-enable' employee.id %}" class="btn btn-success" style="padding: 4px 8px;">Activar</a>
+                    {% endif %}
+                </div>
+                <a href="{% url 'employee-update' employee.id %}" class="btn btn-warning">Editar</a>
+            </td>
         </tr>
         {% endfor %}
     </tbody>
