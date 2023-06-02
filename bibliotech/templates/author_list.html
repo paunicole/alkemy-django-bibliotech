@@ -18,6 +18,10 @@
         margin-top: -7px;
     }
 </style>
+
+<a href="{% url 'author-create' %}" class="btn btn-primary" style="margin-bottom: 10px;">Añadir Autor</a>
+
+
 <table class="table table-striped">
     <thead>
         <tr>
@@ -25,6 +29,7 @@
             <th>Apellido</th>
             <th>Nacionalidad</th>
             <th>Activo</th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -43,6 +48,16 @@
             {% else %}
             <td>❌</td>
             {% endif %}
+            <td style="display: flex; justify-content: space-between;">
+                <div style="margin-right: -64px;">
+                    {% if author.is_active %}
+                    <a href="{% url 'author-disable' author.id %}" class="btn btn-danger" style="padding: 4px 8px;">Desactivar</a>
+                    {% else %}
+                    <a href="{% url 'author-enable' author.id %}" class="btn btn-success" style="padding: 4px 8px;">Activar</a>
+                    {% endif %}
+                </div>
+                <a href="{% url 'author-update' author.id %}" class="btn btn-warning">Editar</a>
+            </td>
         </tr>
         {% endfor %}
     </tbody>
