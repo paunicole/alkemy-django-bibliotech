@@ -12,7 +12,13 @@ class EmployeeForm(forms.ModelForm):
             "file_number": "Número de legajo",
         }
         widgets = {
-            "first_name": forms.TextInput(attrs={"class": "form-control"}),
-            "last_name": forms.TextInput(attrs={"class": "form-control"}),
-            "file_number": forms.TextInput(attrs={"class": "form-control"}),
+            "first_name": forms.TextInput(
+                attrs={"class": "form-control", "placeholder": "Nombre"}
+            ),
+            "last_name": forms.TextInput(
+                attrs={"class": "form-control", "placeholder": "Apellido"}
+            ),
+            "file_number": forms.TextInput(
+                attrs={"class": "form-control", "placeholder": "Número de legajo"}
+            ),
         }

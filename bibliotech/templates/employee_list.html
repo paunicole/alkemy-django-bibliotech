@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+
+{% block title %} {{ title }} {% endblock %}
 {% block content %}
 
 <a href="{% url 'employee-create' %}" class="btn btn-primary" style="margin-bottom: 10px;">Añadir Empleado</a>
