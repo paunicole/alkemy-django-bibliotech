@@ -3,15 +3,6 @@ from ..models.member import Member
 from ..forms.member_form import MemberForm
 
 
-def member_list(request):
-    members = Member.objects.all()
-    context = {
-        "members": members,
-        "title": "Lista de Socios",
-    }
-    return render(request, "member_list.html", context)
-
-
 def member_create(request):
     form = MemberForm()
     context = {
@@ -49,6 +40,14 @@ def member_update(request, member_id):
         "member_form.html",
         context,
     )
+
+
+def member_list(request):
+    members = Member.objects.all()
+    context = {
+        "members": members,
+    }
+    return render(request, "member_list.html", context)
 
 
 def member_disable(request, pk):
