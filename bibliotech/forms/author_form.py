@@ -4,6 +4,10 @@ from django_countries.widgets import CountrySelectWidget
 
 
 class AuthorForm(forms.ModelForm):
+    nationality = CountryField(blank_label="Selecciona un país").formfield(
+        widget=CountrySelectWidget(attrs={"class": "form-control"})
+
+      
     class Meta:
         model = Author
         fields = ["first_name", "last_name", "nationality"]
