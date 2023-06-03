@@ -1,6 +1,7 @@
 from django.urls import path
 from .views import employee_views
 from .views import author_views
+from .views import member_views
 
 urlpatterns = [
     path("employee/new", employee_views.employee_create, name="employee-create"),
@@ -36,5 +37,22 @@ urlpatterns = [
         "author/enable/<str:pk>",
         author_views.author_enable,
         name="author-enable",
+    ),
+    path("member/new", member_views.member_create, name="member-create"),
+    path("member-list", member_views.member_list, name="member-list"),
+    path(
+        "member/update/<str:member_id>",
+        member_views.member_update,
+        name="member-update",
+    ),
+    path(
+        "member/disable/<str:pk>",
+        member_views.member_disable,
+        name="member-disable",
+    ),
+    path(
+        "member/enable/<str:pk>",
+        member_views.member_enable,
+        name="member-enable",
     ),
 ]
