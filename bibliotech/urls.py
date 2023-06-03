@@ -67,4 +67,9 @@ urlpatterns = [
         book_views.book_disable,
         name="book-disable",
     ),
+    path(
+        "book/enable/<str:pk>",
+        book_views.book_enable,
+        name="book-enable",
+    ),
 ]

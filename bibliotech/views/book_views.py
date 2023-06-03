@@ -47,3 +47,10 @@ def book_disable(request, pk):
     book.is_active = False
     book.save()
     return redirect("book-list")
+
+
+def book_enable(request, pk):
+    book = get_object_or_404(Book, pk=pk)
+    book.is_active = True
+    book.save()
+    return redirect("book-list")
