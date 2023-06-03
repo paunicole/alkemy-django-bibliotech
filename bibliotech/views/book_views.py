@@ -3,6 +3,15 @@ from ..models.book import Book
 from ..forms.book_form import BookForm
 
 
+def book_list(request):
+    books = Book.objects.all()
+    context = {
+        "books": books,
+        "title": "Lista de Libros",
+    }
+    return render(request, "book_list.html", context)
+
+
 def book_create(request):
     form = BookForm()
     context = {

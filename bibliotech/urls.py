@@ -57,6 +57,7 @@ urlpatterns = [
         name="member-enable",
     ),
     path("book/new", book_views.book_create, name="book-create"),
+    path("book-list", book_views.book_list, name="book-list"),
     path(
         "book/update/<str:book_id>",
         book_views.book_update,
