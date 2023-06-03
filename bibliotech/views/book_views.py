@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from ..models.book import Book
 from ..forms.book_form import BookForm
 
@@ -40,3 +40,10 @@ def book_update(request, book_id):
         "book_form.html",
         context,
     )
+
+
+def book_disable(request, pk):
+    book = get_object_or_404(Book, pk=pk)
+    book.is_active = False
+    book.save()
+    return redirect("book-list")
