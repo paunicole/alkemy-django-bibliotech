@@ -3,18 +3,11 @@ from ..models.author import Author
 from ..forms.author_form import AuthorForm
 
 
-def author_view(request, id):
-    author = Author.objects.filter(id=id).first()
-    context = {
-        "author": author,
-    }
-    return render(request, "author_view.html", context)
-
-
 def author_list(request):
     authors = Author.objects.all()
     context = {
         "authors": authors,
+        "title": "Lista de Autores",
     }
     return render(request, "author_list.html", context)
 

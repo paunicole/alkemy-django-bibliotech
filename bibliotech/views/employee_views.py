@@ -5,7 +5,11 @@ from ..forms.employee_form import EmployeeForm
 
 def employee_list(request):
     employees = Employee.objects.all()
-    context = {"employees": employees}
+    context = {
+        "employees": employees,
+        "title": "Lista de Empleados",
+    }
+
     return render(request, "employee_list.html", context)
 
 
