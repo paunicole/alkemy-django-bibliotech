@@ -5,7 +5,7 @@ from django_countries.fields import CountryField
 
 
 class AuthorForm(forms.ModelForm):
-    nationality = CountryField(blank_label="Seleccione un país").formfield(
+    nationality = CountryField(blank_label="Selecciona un país").formfield(
         widget=CountrySelectWidget(attrs={"class": "form-control"})
     )
 
