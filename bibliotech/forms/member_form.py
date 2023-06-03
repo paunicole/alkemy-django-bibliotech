@@ -13,12 +13,8 @@ class MemberForm(forms.ModelForm):
             "birth_date": "Fecha de Nacimiento",
         }
         widgets = {
-            "first_name": forms.TextInput(
-                attrs={"class": "form-control", "placeholder": "Apellido"}
-            ),
-            "last_name": forms.TextInput(
-                attrs={"class": "form-control", "placeholder": "Apellido"}
-            ),
+            "first_name": forms.TextInput(attrs={"class": "form-control"}),
+            "last_name": forms.TextInput(attrs={"class": "form-control"}),
             "birth_date": DateInput(
                 format="%Y-%m-%d", attrs={"type": "date", "class": "form-control"}
             ),
