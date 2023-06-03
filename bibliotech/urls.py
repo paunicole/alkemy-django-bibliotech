@@ -2,6 +2,7 @@ from django.urls import path
 from .views import employee_views
 from .views import author_views
 from .views import member_views
+from .views import book_views
 
 urlpatterns = [
     path("employee/new", employee_views.employee_create, name="employee-create"),
@@ -55,4 +56,5 @@ urlpatterns = [
         member_views.member_enable,
         name="member-enable",
     ),
+    path("book/new", book_views.book_create, name="book-create"),
 ]
