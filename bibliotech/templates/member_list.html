@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<a href="{% url 'member-create' %}" class="btn btn-primary" style="margin-bottom: 10px;">Añadir Socio</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Activo</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for member in members %}
+        <tr>
+            <td>{{ member.first_name }}</td>
+            <td>{{ member.last_name }}</td>
+            <td>{{ member.birth_date }}</td>
+            {% if member.is_active %}
+            <td>✅</td>
+            {% else %}
+            <td>❌</td>
+            {% endif %}
+            <td style="display: flex; justify-content: space-between;">
+                <div style="margin-right: -64px;">
+                    {% if member.is_active %}
+                    <a href="{% url 'member-disable' member.id %}" class="btn btn-danger" style="padding: 4px 8px;">Desactivar</a>
+                    {% else %}
+                    <a href="{% url 'member-enable' member.id %}" class="btn btn-success" style="padding: 4px 8px;">Activar</a>
+                    {% endif %}
+                </div>
+                <a href="{% url 'member-update' member.id %}" class="btn btn-warning">Editar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

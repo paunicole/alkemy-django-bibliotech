@@ -1,5 +1,6 @@
 from ..models.member import Member
 from django import forms
+from django.forms.widgets import DateInput
 
 
 class MemberForm(forms.ModelForm):
@@ -14,5 +15,7 @@ class MemberForm(forms.ModelForm):
         widgets = {
             "first_name": forms.TextInput(attrs={"class": "form-control"}),
             "last_name": forms.TextInput(attrs={"class": "form-control"}),
-            "birth_date": forms.DateInput(attrs={"class": "form-control"}),
+            "birth_date": DateInput(
+                format="%Y-%m-%d", attrs={"type": "date", "class": "form-control"}
+            ),
         }

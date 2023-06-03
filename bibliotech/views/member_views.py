@@ -42,6 +42,14 @@ def member_update(request, member_id):
     )
 
 
+def member_list(request):
+    members = Member.objects.all()
+    context = {
+        "members": members,
+    }
+    return render(request, "member_list.html", context)
+
+
 def member_disable(request, pk):
     member = get_object_or_404(Member, pk=pk)
     member.is_active = False
