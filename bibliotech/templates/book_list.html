@@ -5,41 +5,15 @@
 
 <a href="{% url 'book-create' %}" class="btn btn-primary" style="margin-bottom: 10px;">Añadir Libro</a>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Título</th>
-            <th>Descripción</th>
-            <th>ISBN</th>
-            <th>Autor</th>
-            <th>Activo</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for book in books %}
-        <tr>
-            <td>{{ book.title }}</td>
-            <td>{{ book.description }}</td>
-            <td>{{ book.isbn }}</td>
-            <td>{{ book.author }}</td>
-            {% if book.is_active %}
-            <td>✅</td>
-            {% else %}
-            <td>❌</td>
-            {% endif %}
-            <td style="display: flex; justify-content: space-between;">
-                <div style="margin-right: -64px;">
-                    {% if book.is_active %}
-                    <a href="{% url 'book-disable' book.id %}" class="btn btn-danger" style="padding: 4px 8px;">Desactivar</a>
-                    {% else %}
-                    <a href="{% url 'book-enable' book.id %}" class="btn btn-success" style="padding: 4px 8px;">Activar</a>
-                    {% endif %}
-                </div>
-                <a href="{% url 'book-update' book.id %}" class="btn btn-warning">Editar</a>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="row">
+    {% if books %}
+        {% include 'book_table.html' %}
+    {% else %}
+        <div class="col-12">
+            <div class="alert alert-info" role="alert">
+                No hay libros registrados.
+            </div>
+        </div>
+    {% endif %}
+</div>
 {% endblock %}

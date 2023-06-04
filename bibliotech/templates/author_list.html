@@ -31,44 +31,15 @@
 
 <a href="{% url 'author-create' %}" class="btn btn-primary" style="margin-bottom: 10px;">Añadir Autor</a>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Nacionalidad</th>
-            <th>Activo</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for author in authors %}
-        <tr>
-            <td>{{ author.first_name }}</td>
-            <td>{{ author.last_name }}</td>
-            <td class="flag-cell">
-                <div class="flag-icon">
-                    <i class="flag2x {{ author.nationality.flag_css }}"></i>
-                </div>
-                <div class="center">{{ author.nationality.name }}</div>
-            </td>
-            {% if author.is_active %}
-            <td>✅</td>
-            {% else %}
-            <td>❌</td>
-            {% endif %}
-            <td style="display: flex; justify-content: space-between;">
-                <div style="margin-right: -64px;">
-                    {% if author.is_active %}
-                    <a href="{% url 'author-disable' author.id %}" class="btn btn-danger" style="padding: 4px 8px;">Desactivar</a>
-                    {% else %}
-                    <a href="{% url 'author-enable' author.id %}" class="btn btn-success" style="padding: 4px 8px;">Activar</a>
-                    {% endif %}
-                </div>
-                <a href="{% url 'author-update' author.id %}" class="btn btn-warning">Editar</a>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="row">
+    {% if authors %}
+        {% include 'author_table.html' %}
+    {% else %}
+        <div class="col-12">
+            <div class="alert alert-info" role="alert">
+                No hay autores registrados.
+            </div>
+        </div>
+    {% endif %}
+</div>
 {% endblock %}
