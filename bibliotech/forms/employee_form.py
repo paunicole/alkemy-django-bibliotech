@@ -35,12 +35,9 @@ class EmployeeForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        if not self.instance.pk:
-            if Employee.objects.exists():
-                last_file_number = (
-                    Employee.objects.order_by("-file_number").first().file_number
-                )
-            else:
-                last_file_number = 0
-            next_file_number = str(last_file_number + 1).zfill(8)
-            self.initial["file_number"] = next_file_number
+        if Employee.objects.exists():
+            last_file_number = Employee.objects.last().file_number
+        else:
+            last_file_number = 0
+        next_file_number = str(last_file_number + 1).zfill(8)
+        self.fields["file_number"].initial = next_file_number
