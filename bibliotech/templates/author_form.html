@@ -6,17 +6,17 @@
     {% csrf_token %}
     <div class="form-floating mb-3">
         {{ form.first_name }}
-        <label for="{{ form.first_name.id_for_label }}">Nombre:</label>
+        <label for="{{ form.first_name.id_for_label }}">Nombre</label>
         {{ form.first_name.errors }}
     </div>
     <div class="form-floating mb-3">
         {{ form.last_name }}
-        <label for="{{ form.last_name.id_for_label }}">Apellido:</label>
+        <label for="{{ form.last_name.id_for_label }}">Apellido</label>
         {{ form.last_name.errors }}
     </div>
     <div class="form-floating mb-3">
         {{ form.nationality }}
-        <label for="{{ form.nationality.id_for_label }}">Nacionalidad:</label>
+        <label for="{{ form.nationality.id_for_label }}">Nacionalidad</label>
         {{ form.nationality.errors }}
     </div>
     <input type="submit" class="btn {{ action }}" value="{{ submit }}">
