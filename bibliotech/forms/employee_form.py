@@ -11,6 +11,7 @@ class EmployeeForm(forms.ModelForm):
             "last_name": "Apellido",
             "file_number": "Número de legajo",
         }
+
         widgets = {
             "first_name": forms.TextInput(
                 attrs={"class": "form-control", "placeholder": "Nombre"}
@@ -19,6 +20,10 @@ class EmployeeForm(forms.ModelForm):
                 attrs={"class": "form-control", "placeholder": "Apellido"}
             ),
             "file_number": forms.TextInput(
-                attrs={"class": "form-control", "placeholder": "Número de legajo"}
+                attrs={
+                    "class": "form-control",
+                    "placeholder": "Número de legajo",
+                    "disabled": True,
+                }
             ),
         }

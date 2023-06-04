@@ -1,8 +1,19 @@
 from ..models.book import Book
+from ..models.author import Author
 from django import forms
 
 
 class BookForm(forms.ModelForm):
+    author = forms.ModelChoiceField(
+        queryset=Author.objects.all(),
+        empty_label="Seleccione un autor",
+        widget=forms.Select(
+            attrs={
+                "class": "form-control",
+            }
+        ),
+    )
+
     class Meta:
         model = Book
         fields = ["title", "description", "isbn", "author"]
@@ -21,8 +32,5 @@ class BookForm(forms.ModelForm):
             ),
             "isbn": forms.TextInput(
                 attrs={"class": "form-control", "placeholder": "ISBN"}
-            ),
-            "author": forms.Select(
-                attrs={"class": "form-control", "placeholder": "Autor"}
             ),
         }

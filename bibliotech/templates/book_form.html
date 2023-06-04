@@ -2,28 +2,37 @@
 
 {% block title %} {{ title }} {% endblock %}
 {% block content %}
+<style>
+    textarea#{{ form.description.id_for_label }} {
+        height: 150px;
+        resize: none;
+    }
+</style>
 <form action="#" method="POST">
     {% csrf_token %}
     <div class="form-floating mb-3">
         {{ form.title }}
-        <label for="{{ form.title.id_for_label }}">Título:</label>
+        <label for="{{ form.title.id_for_label }}">Título</label>
         {{ form.title.errors }}
     </div>
     <div class="form-floating mb-3">
         {{ form.description }}
-        <label for="{{ form.description.id_for_label }}">Descripción:</label>
+        <label for="{{ form.description.id_for_label }}">Descripción</label>
         {{ form.description.errors }}
     </div>
-    <div class="form-floating mb-3">
-        {{ form.isbn }}
-        <label for="{{ form.isbn.id_for_label }}">ISBN:</label>
-        {{ form.isbn.errors }}
+    <div class="row">
+        <div class="form-floating mb-3">
+            {{ form.isbn }}
+            <label class="margin-left 10" for="{{ form.isbn.id_for_label }}">ISBN</label>
+            {{ form.isbn.errors }}
+        </div>
+        <div class="form-floating mb-3">
+            {{ form.author }}
+            <label class="margin-left 10" for="{{ form.author.id_for_label }}">Autor</label>
+            {{ form.author.errors }}
+        </div>
     </div>
-    <div class="form-floating mb-3">
-        {{ form.author }}
-        <label for="{{ form.author.id_for_label }}">Author:</label>
-        {{ form.author.errors }}
-    </div>
+
     <div style="padding: 16px;">
         <input type="submit" class="btn {{ action }}" value="{{ submit }}">
         <a href="{% url 'book-list' %}" class="btn btn-secondary">Volver a la Lista de Libros</a>
