@@ -30,7 +30,6 @@ class EmployeeForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # first check if there are employees
         if Employee.objects.exists():
             last_file_number = Employee.objects.last().file_number
         else:
