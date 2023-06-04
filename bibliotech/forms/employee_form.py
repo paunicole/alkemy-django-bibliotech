@@ -28,11 +28,19 @@ class EmployeeForm(forms.ModelForm):
             ),
         }
 
+    def save(self, commit=True):
+        if self.instance.pk:
+            self.fields.pop("file_number")
+        return super().save(commit=commit)
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        if Employee.objects.exists():
-            last_file_number = Employee.objects.last().file_number
-        else:
-            last_file_number = 0
-        next_file_number = str(last_file_number + 1).zfill(8)
-        self.fields["file_number"].initial = next_file_number
+        if not self.instance.pk:
+            if Employee.objects.exists():
+                last_file_number = (
+                    Employee.objects.order_by("-file_number").first().file_number
+                )
+            else:
+                last_file_number = 0
+            next_file_number = str(last_file_number + 1).zfill(8)
+            self.initial["file_number"] = next_file_number

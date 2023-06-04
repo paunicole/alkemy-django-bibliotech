@@ -37,10 +37,13 @@ def employee_update(request, employee_id):
         "submit": "Modificar",
         "title": "Modificar Empleado",
         "action": "btn-warning",
+        "formatted_file_number": employee.format_file_number(),
     }
 
     if request.method == "POST":
-        form = EmployeeForm(request.POST, instance=employee)
+        post_data = request.POST.copy()
+        post_data["file_number"] = employee.file_number
+        form = EmployeeForm(post_data, instance=employee)
         if form.is_valid():
             form.save()
             return redirect("employee-list")

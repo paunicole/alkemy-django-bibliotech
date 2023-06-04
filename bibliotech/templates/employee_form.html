@@ -15,7 +15,11 @@
         {{ form.last_name.errors }}
     </div>
     <div class="form-floating mb-3">
-        {{ form.file_number }}
+        {% if form.instance.pk %}
+            <input type="text" id="{{ form.file_number.id_for_label }}" value="{{ formatted_file_number }}" class="form-control" readonly>
+        {% else %}
+            {{ form.file_number }}
+        {% endif %}
         <label for="{{ form.file_number.id_for_label }}">Número de legajo</label>
         {{ form.file_number.errors }}
     </div>
