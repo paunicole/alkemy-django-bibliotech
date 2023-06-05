@@ -81,4 +81,9 @@ urlpatterns = [
         lendbook_views.lendbook_update,
         name="lendbook-update",
     ),
+    path(
+        "lenbook/delete/<str:lendbook_id>",
+        lendbook_views.lendbook_delete,
+        name="lendbook-delete",
+    ),
 ]

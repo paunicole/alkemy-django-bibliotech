@@ -49,3 +49,9 @@ def lendbook_update(request, lendbook_id):
         "lendbook_form.html",
         context,
     )
+
+
+def lendbook_delete(request, lendbook_id):
+    lendbook = LendBook.objects.get(id=lendbook_id)
+    lendbook.delete()
+    return redirect("lendbook-list")

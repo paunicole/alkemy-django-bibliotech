@@ -19,6 +19,7 @@
             <td>{{ lendbook.employee }}</td>
             <td style="display: flex; justify-content: space-between;">
                 <a href="{% url 'lendbook-update' lendbook.id %}" class="btn btn-warning">Editar</a>
+                <a href="{% url 'lendbook-delete' lendbook.id %}" class="btn btn-danger">Eliminar</a>
         </tr>
         {% endfor %}
     </tbody>
