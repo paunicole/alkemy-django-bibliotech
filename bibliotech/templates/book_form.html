@@ -7,6 +7,9 @@
         height: 150px;
         resize: none;
     }
+    .bookmg{
+        margin-left:10px
+}
 </style>
 <form action="#" method="POST">
     {% csrf_token %}
@@ -21,14 +24,14 @@
         {{ form.description.errors }}
     </div>
     <div class="row">
-        <div class="form-floating mb-3">
+        <div class="form-floating mb-3 col-xxl-6">
             {{ form.isbn }}
-            <label class="margin-left 10" for="{{ form.isbn.id_for_label }}">ISBN</label>
+            <label class="bookmg" for="{{ form.isbn.id_for_label }}">ISBN</label>
             {{ form.isbn.errors }}
         </div>
-        <div class="form-floating mb-3">
+        <div class="form-floating mb-3 col-xxl-6">
             {{ form.author }}
-            <label class="margin-left 10" for="{{ form.author.id_for_label }}">Autor</label>
+            <label class="bookmg" for="{{ form.author.id_for_label }}">Autor</label>
             {{ form.author.errors }}
         </div>
     </div>
