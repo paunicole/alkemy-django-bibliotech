@@ -75,4 +75,10 @@ urlpatterns = [
         name="book-enable",
     ),
     path("lendbook/new", lendbook_views.lendbook_create, name="lendbook-create"),
+    path("lendbook-list", lendbook_views.lendbook_list, name="lendbook-list"),
+    path(
+        "lendbook/update/<str:lendbook_id>",
+        lendbook_views.lendbook_update,
+        name="lendbook-update",
+    ),
 ]

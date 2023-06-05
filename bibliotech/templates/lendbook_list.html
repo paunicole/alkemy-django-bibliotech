@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+{% block content %}
+
+<a href="{% url 'lendbook-create' %}" class="btn btn-primary" style="margin-bottom: 10px;">Añadir Préstamo</a>
+
+<div class="row">
+    {% if lendbooks %}
+        {% include 'lendbook_table.html' %}
+    {% else %}
+        <div class="col-12">
+            <div class="alert alert-info" role="alert">
+                No hay préstamos registrados.
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

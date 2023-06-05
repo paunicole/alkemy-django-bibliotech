@@ -62,7 +62,7 @@ class LendBookForm(forms.ModelForm):
                 attrs={"class": "form-control", "placeholder": "Empleado"}
             ),
             "lend_date": forms.DateTimeInput(
-                format="%d-%m-%Y",
+                format="%Y-%m-%d",
                 attrs={
                     "class": "form-control",
                     "placeholder": "Fecha de préstamo",
@@ -70,7 +70,7 @@ class LendBookForm(forms.ModelForm):
                 },
             ),
             "return_date": forms.DateTimeInput(
-                format="%d-%m-%Y",
+                format="%Y-%m-%d",
                 attrs={
                     "class": "form-control",
                     "placeholder": "Fecha de devolución",

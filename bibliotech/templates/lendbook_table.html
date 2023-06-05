@@ -1,0 +1,25 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Fecha Préstamo</th>
+            <th>Fecha Devolución</th>
+            <th>Socio</th>
+            <th>Libro</th>
+            <th>Empleado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for lendbook in lendbooks %}
+        <tr>
+            <td>{{ lendbook.lend_date }}</td>
+            <td>{{ lendbook.return_date }}</td>
+            <td>{{ lendbook.member }}</td>
+            <td>{{ lendbook.book }}</td>
+            <td>{{ lendbook.employee }}</td>
+            <td style="display: flex; justify-content: space-between;">
+                <a href="{% url 'lendbook-update' lendbook.id %}" class="btn btn-warning">Editar</a>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

@@ -17,11 +17,35 @@ def lendbook_create(request):
     context = {
         "form": form,
         "submit": "Crear",
-        "title": "Crear Prestamo",
+        "title": "Crear Préstamo",
         "action": "btn-primary",
     }
     if request.method == "POST":
         form = LendBookForm(request.POST)
         if form.is_valid():
             form.save()
+            return redirect("lendbook-list")
     return render(request, "lendbook_form.html", context)
+
+
+def lendbook_update(request, lendbook_id):
+    lendbook = LendBook.objects.get(id=lendbook_id)
+    form = LendBookForm(instance=lendbook)
+    context = {
+        "form": form,
+        "submit": "Modificar",
+        "title": "Modificar Préstamo",
+        "action": "btn-warning",
+    }
+
+    if request.method == "POST":
+        form = LendBookForm(request.POST, instance=lendbook)
+        if form.is_valid():
+            form.save()
+            return redirect("lendbook-list")
+
+    return render(
+        request,
+        "lendbook_form.html",
+        context,
+    )
