@@ -12,8 +12,8 @@
     <tbody>
         {% for book in books %}
         <tr>
-            <td>{{ book.title }}</td>
-            <td>{{ book.description }}</td>
+            <td style="max-width:100px; overflow-x: auto;">{{ book.title }}</td>
+            <td style="max-width:200px; overflow-x: auto;">{{ book.description }}</td>
             <td>{{ book.isbn }}</td>
             <td>{{ book.author }}</td>
             {% if book.is_active %}
