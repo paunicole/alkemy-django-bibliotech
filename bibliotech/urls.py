@@ -3,6 +3,7 @@ from .views import employee_views
 from .views import author_views
 from .views import member_views
 from .views import book_views
+from .views import lendbook_views
 
 urlpatterns = [
     path("employee/new", employee_views.employee_create, name="employee-create"),
@@ -72,5 +73,17 @@ urlpatterns = [
         "book/enable/<str:pk>",
         book_views.book_enable,
         name="book-enable",
+    ),
+    path("lendbook/new", lendbook_views.lendbook_create, name="lendbook-create"),
+    path("lendbook-list", lendbook_views.lendbook_list, name="lendbook-list"),
+    path(
+        "lendbook/update/<str:lendbook_id>",
+        lendbook_views.lendbook_update,
+        name="lendbook-update",
+    ),
+    path(
+        "lenbook/delete/<str:lendbook_id>",
+        lendbook_views.lendbook_delete,
+        name="lendbook-delete",
     ),
 ]

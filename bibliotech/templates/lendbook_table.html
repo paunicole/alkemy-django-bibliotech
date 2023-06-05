@@ -1,0 +1,48 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Fecha Préstamo</th>
+            <th>Fecha Devolución</th>
+            <th>Socio</th>
+            <th>Libro</th>
+            <th>Empleado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for lendbook in lendbooks %}
+        <tr>
+            <td>{{ lendbook.lend_date }}</td>
+            <td>{{ lendbook.return_date }}</td>
+            <td>{{ lendbook.member }}</td>
+            <td>{{ lendbook.book }}</td>
+            <td>{{ lendbook.employee }}</td>
+            <td style="display: flex; justify-content: space-between;">
+                <a href="{% url 'lendbook-update' lendbook.id %}" class="btn btn-warning">Editar</a>
+                <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal-{{ lendbook.id }}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Modal para confirmar eliminación -->
+{% for lendbook in lendbooks %}
+<div class="modal fade" id="confirmDeleteModal-{{ lendbook.id }}" tabindex="-1" aria-labelledby="confirmDeleteModalLabel-{{ lendbook.id }}" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmDeleteModalLabel-{{ lendbook.id }}">Confirmar eliminación</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>¿Estás seguro de que deseas eliminar este préstamo?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <a href="{% url 'lendbook-delete' lendbook.id %}" class="btn btn-danger">Eliminar</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
