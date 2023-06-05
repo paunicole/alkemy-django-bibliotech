@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+{% block content %}
+<style>
+    textarea#{{ form.description.id_for_label }} {
+        height: 150px;
+        resize: none;
+    }
+    .bookmg{
+        margin-left:10px
+}
+</style>
+<form action="#" method="POST">
+    {% csrf_token %}
+    <div class="form-floating mb-3">
+        {{ form.member }}
+        <label for="{{ form.title.id_for_label }}">Socio</label>
+        {{ form.member.errors }}
+    </div>
+    <div class="form-floating mb-3">
+        {{ form.book }}
+        <label for="{{ form.description.id_for_label }}">Libro</label>
+        {{ form.book.errors }}
+    </div>
+    <div class="form-floating mb-3">
+        {{ form.employee }}
+        <label for="{{ form.description.id_for_label }}">Empleado</label>
+        {{ form.employee.errors }}
+    </div>
+    <div class="row">
+        <div class="form-floating mb-3 col-xxl-6">
+            {{ form.lend_date }}
+            <label class="bookmg" for="{{ form.isbn.id_for_label }}">Préstamo</label>
+            {{ form.lend_date.errors }}
+        </div>
+        <div class="form-floating mb-3 col-xxl-6">
+            {{ form.return_date }}
+            <label class="bookmg" for="{{ form.author.id_for_label }}">Devolución</label>
+            {{ form.return_date.errors }}
+        </div>
+    </div>
+
+    <div style="padding: 16px;">
+        <input type="submit" class="btn {{ action }}" value="{{ submit }}">
+        <a href="{% url 'book-list' %}" class="btn btn-secondary">Volver a la Lista de Préstamos</a>
+    </div>
+</form>
+{% endblock %}
