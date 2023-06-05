@@ -40,24 +40,42 @@
     <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
     <!-- Datatables script -->
     <script>
-        $(document).ready(function () {
-            $("#author-table, #member-table, #employee-table, #book-table, #lendbook-table").DataTable({
-                paging: true,
-                pageLength: 8,
-                lengthChange: true,
-                autoWidth: true,
-                info: true,
-                sort: true,
-                columnDefs: [
-                  { orderable: false, targets: -1 },
-                  { searchable: false, targets: [-2, -1]}
-                ],
-                language : {
-                    "url": "//cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json"
-                    },
-                },
-            );
-        });
+            $(document).ready(function () {
+                var tableOptions = {
+                    paging: true,
+                    pageLength: 8,
+                    lengthChange: true,
+                    autoWidth: true,
+                    info: true,
+                    sort: true,
+                    columnDefs: [
+                        { orderable: false, targets: -1 }
+                    ],
+                    language: {
+                        "url": "//cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json"
+                    }
+                };
+
+                $("#author-table, #member-table, #employee-table, #book-table").each(function () {
+                    $(this).DataTable({
+                        ...tableOptions,
+                        columnDefs: [
+                            ...tableOptions.columnDefs,
+                            { searchable: false, targets: [-2, -1] }
+                        ]
+                    });
+                });
+
+                $("#lendbook-table").DataTable({
+                    ...tableOptions,
+                    columnDefs: [
+                        ...tableOptions.columnDefs,
+                        { searchable: true, targets: [-2] },
+                        { searchable: false, targets: [-1] }
+                    ]
+                });
+            });
+
     </script>
 </body>
 
