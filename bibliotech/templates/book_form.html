@@ -27,7 +27,13 @@
         <div class="form-floating mb-3 col-xxl-6">
             {{ form.isbn }}
             <label class="bookmg" for="{{ form.isbn.id_for_label }}">ISBN</label>
-            {{ form.isbn.errors }}
+            {% if form.errors.isbn %}
+                <div class="alert alert-danger mt-3">
+                    {% for error in form.errors.isbn %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+            {% endif %}
         </div>
         <div class="form-floating mb-3 col-xxl-6">
             {{ form.author }}
