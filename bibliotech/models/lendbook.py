@@ -6,8 +6,8 @@ from datetime import timedelta
 
 
 class LendBook(models.Model):
-    lend_date = models.DateTimeField()
-    return_date = models.DateTimeField()
+    lend_date = models.DateField()
+    return_date = models.DateField()
     member = models.ForeignKey(Member, on_delete=models.CASCADE)
     employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)

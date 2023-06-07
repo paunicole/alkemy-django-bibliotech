@@ -7,7 +7,7 @@ def lendbook_list(request):
     lendbooks = LendBook.objects.all()
     context = {
         "lendbooks": lendbooks,
-        "title": "Lista de Prestamos",
+        "title": "Lista de Préstamos",
     }
     return render(request, "lendbook_list.html", context)
 
