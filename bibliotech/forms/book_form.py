@@ -5,7 +5,7 @@ from django import forms
 
 class BookForm(forms.ModelForm):
     author = forms.ModelChoiceField(
-        queryset=Author.objects.all(),
+        queryset=Author.objects.filter(is_active=True),
         empty_label="Seleccione un autor",
         widget=forms.Select(
             attrs={
