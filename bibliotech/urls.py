@@ -4,8 +4,10 @@ from .views import author_views
 from .views import member_views
 from .views import book_views
 from .views import lendbook_views
+from .views import home_views
 
 urlpatterns = [
+    path("", home_views.front_home, name="home"),
     path("employee/new", employee_views.employee_create, name="employee-create"),
     path("employee-list", employee_views.employee_list, name="employee-list"),
     path(
