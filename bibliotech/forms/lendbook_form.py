@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 
 class LendBookForm(forms.ModelForm):
     member = forms.ModelChoiceField(
-        queryset=Member.objects.all(),
+        queryset=Member.objects.filter(is_active=True),
         empty_label="Seleccione un miembro",
         widget=forms.Select(
             attrs={
@@ -17,7 +17,7 @@ class LendBookForm(forms.ModelForm):
         ),
     )
     book = forms.ModelChoiceField(
-        queryset=Book.objects.all(),
+        queryset=Book.objects.filter(is_active=True),
         empty_label="Seleccione un libro",
         widget=forms.Select(
             attrs={
@@ -26,7 +26,7 @@ class LendBookForm(forms.ModelForm):
         ),
     )
     employee = forms.ModelChoiceField(
-        queryset=Employee.objects.all(),
+        queryset=Employee.objects.filter(is_active=True),
         empty_label="Seleccione un empleado",
         widget=forms.Select(
             attrs={
