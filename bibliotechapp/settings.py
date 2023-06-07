@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "bibliotech",
     "django_countries",
+    "api",
 ]
 
 MIDDLEWARE = [
