@@ -1,3 +1,5 @@
+import requests
+from django.contrib.staticfiles.storage import staticfiles_storage
 from django.db import models
 from .author import Author
 from django.core.exceptions import ValidationError
@@ -31,6 +33,10 @@ def validate_isbn(isbn):
     return isbn
 
 
+def get_default_cover_image():
+    return "https://sciendo.com/_next/image?url=%2Fproduct-not-found.png"
+
+
 class Book(models.Model):
     title = models.CharField(max_length=300)
     description = models.TextField(blank=True, null=True)
@@ -44,3 +50,14 @@ class Book(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_cover_image(self, size="L"):
+        url = f"https://covers.openlibrary.org/b/isbn/{self.isbn}-{size}.jpg"
+
+        try:
+            response = requests.get(url)
+            response.raise_for_status()
+
+            return response.url
+        except requests.exceptions.HTTPError:
+            return get_default_cover_image()

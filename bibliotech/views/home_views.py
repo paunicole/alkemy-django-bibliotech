@@ -8,4 +8,7 @@ def front_home(request):
         "books": books,
         "title": "Lista de Libros",
     }
+    for book in books:
+        book.image_path = book.get_cover_image()
+
     return render(request, "home.html", context)
