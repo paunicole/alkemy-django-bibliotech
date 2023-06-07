@@ -17,7 +17,13 @@
     <div class="form-floating mb-3">
         {{ form.birth_date }}
         <label for="{{ form.birth_date.id_for_label }}">Fecha de Nacimiento</label>
-        {{ form.birth_date.errors }}
+        {% if form.errors.birth_date %}
+            <div class="alert alert-danger mt-3">
+                {% for error in form.errors.birth_date %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+        {% endif %}
     </div>
     <div style="padding: 16px;">
         <input type="submit" class="btn {{ action }}" value="{{ submit }}">

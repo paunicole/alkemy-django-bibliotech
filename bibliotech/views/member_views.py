@@ -13,18 +13,20 @@ def member_list(request):
 
 
 def member_create(request):
-    form = MemberForm()
+    if request.method == "POST":
+        form = MemberForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("member-list")
+    else:
+        form = MemberForm()
+
     context = {
         "form": form,
         "submit": "Crear",
         "title": "Crear Socio",
         "action": "btn-primary",
     }
-    if request.method == "POST":
-        form = MemberForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect("member-list")
     return render(request, "member_form.html", context)
 
 
