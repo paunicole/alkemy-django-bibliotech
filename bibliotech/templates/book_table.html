@@ -2,7 +2,7 @@
     <thead>
         <tr>
             <th>Título</th>
-            <th>Descripción</th>
+            <th style="max-width:275px;">Descripción</th>
             <th>ISBN</th>
             <th>Autor</th>
             <th>Activo</th>
@@ -13,7 +13,7 @@
         {% for book in books %}
         <tr>
             <td style="max-width:100px; overflow-x: auto;">{{ book.title }}</td>
-            <td style="max-width:200px; overflow-x: auto;">{{ book.description }}</td>
+            <td class="max-lines-cell" style="overflow-x: auto;">{{ book.description }}</td>
             <td>{{ book.isbn }}</td>
             <td>{{ book.author }}</td>
             {% if book.is_active %}
@@ -21,15 +21,17 @@
             {% else %}
             <td>❌</td>
             {% endif %}
-            <td style="display: flex; justify-content: space-between;">
-                <div style="margin-right: -64px;">
+            <td style="display: flex; align-items: flex-start; justify-content: space-between;">
+                <div style="margin-right: 8px; margin-bottom: 34px;">
                     {% if book.is_active %}
                     <a href="{% url 'book-disable' book.id %}" class="btn btn-danger" style="padding: 4px 8px;">Desactivar</a>
                     {% else %}
                     <a href="{% url 'book-enable' book.id %}" class="btn btn-success" style="padding: 4px 8px;">Activar</a>
                     {% endif %}
                 </div>
-                <a href="{% url 'book-update' book.id %}" class="btn btn-warning">Editar</a>
+                <div>
+                    <a href="{% url 'book-update' book.id %}" class="btn btn-warning">Editar</a>
+                </div>
             </td>
         </tr>
         {% endfor %}
