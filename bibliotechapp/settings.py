@@ -38,8 +38,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "bibliotech",
     "django_countries",
+    "rest_framework",
+    "bibliotech",
     "api",
 ]
 
