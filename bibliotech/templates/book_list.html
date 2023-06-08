@@ -5,6 +5,19 @@
 
 <a href="{% url 'book-create' %}" class="btn btn-primary" style="margin-bottom: 10px;">Añadir Libro</a>
 
+<style>
+    .max-lines-cell {
+        height: 4rem;
+        overflow-y: hidden;
+        max-width: 350px;
+        text-overflow: ellipsis;
+        word-break: break-word;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+</style>
+
 <div class="row">
     {% if books %}
         {% include 'book_table.html' %}
