@@ -19,7 +19,6 @@ def employee_create(request):
         "form": form,
         "submit": "Crear",
         "title": "Crear Empleado",
-        "action": "btn-primary",
     }
     if request.method == "POST":
         form = EmployeeForm(request.POST)
@@ -36,7 +35,6 @@ def employee_update(request, employee_id):
         "form": form,
         "submit": "Modificar",
         "title": "Modificar Empleado",
-        "action": "btn-warning",
         "formatted_file_number": employee.format_file_number(),
     }
 

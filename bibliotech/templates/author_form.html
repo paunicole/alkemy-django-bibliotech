@@ -21,7 +21,7 @@
         <label for="{{ form.nationality.id_for_label }}">Nacionalidad</label>
         {{ form.nationality.errors }}
     </div>
-    <input type="submit" class="btn {{ action }}" value="{{ submit }}">
+    <input type="submit" class="btn btn-primary" value="{{ submit }}">
     <a href="{% url 'author-list' %}" class="btn btn-secondary">Volver a la Lista de Autores</a>
 </form>
 {% endblock %}

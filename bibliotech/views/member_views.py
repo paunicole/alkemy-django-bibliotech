@@ -25,7 +25,6 @@ def member_create(request):
         "form": form,
         "submit": "Crear",
         "title": "Crear Socio",
-        "action": "btn-primary",
     }
     return render(request, "member_form.html", context)
 
@@ -37,7 +36,6 @@ def member_update(request, member_id):
         "form": form,
         "submit": "Modificar",
         "title": "Modificar Socio",
-        "action": "btn-warning",
     }
 
     if request.method == "POST":

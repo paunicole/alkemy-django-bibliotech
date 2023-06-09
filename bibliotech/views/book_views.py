@@ -25,7 +25,6 @@ def book_create(request):
         "form": form,
         "submit": "Crear",
         "title": "Crear Libro",
-        "action": "btn-primary",
     }
     return render(request, "book_form.html", context)
 
@@ -37,7 +36,6 @@ def book_update(request, book_id):
         "form": form,
         "submit": "Modificar",
         "title": "Modificar Libro",
-        "action": "btn-warning",
     }
 
     if request.method == "POST":
