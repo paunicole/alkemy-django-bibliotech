@@ -13,7 +13,8 @@
             ],
             language: {
                 "url": "//cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json"
-            }
+            },
+            order: [[2, "asc"]]
         };
 
         $("#author-table, #member-table, #employee-table, #book-table").each(function () {
@@ -36,5 +37,15 @@
         });
     });
 
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const rows = document.querySelectorAll('.datatable-row');
+
+        gsap.set(rows, { opacity: 0, y: 20 });
+
+        gsap.to(rows, { opacity: 1, y: 0, duration: 0.5, delay: function(index) { return index * 0.1; } });
+    });
 </script>
 {% endblock %}
