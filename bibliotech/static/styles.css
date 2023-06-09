@@ -81,3 +81,28 @@
 .carousel-control-prev, .carousel-control-next {
     filter: invert(100%);
 }
+
+.shadow-btn {
+  /* Add a box shadow to create depth */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.3s ease;
+
+  /* Add a transform to create a slight lift effect */
+  transform: translate3d(0, 0, 0);
+}
+
+.shadow-btn:hover {
+  /* Increase the box shadow on hover */
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
+}
+
+.animated-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: radial-gradient(circle, #96deda, #50c9c3, #96deda);
+    background-size: 300% 300%;
+    z-index: -1;
+}
