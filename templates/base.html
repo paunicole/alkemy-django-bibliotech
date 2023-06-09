@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,15 +12,23 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Custom CSS -->
+    <link href="{% static 'styles.css' %}" rel="stylesheet">
+    <!-- MontSerrat Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 </head>
 <style>
     body {
         background: #6190E8;
         background: -webkit-linear-gradient(to right, #A7BFE8, #6190E8);
         background: linear-gradient(to right, #A7BFE8, #6190E8);
+        font-family: 'Montserrat', sans-serif;
     }
 </style>
 <body>
+    <div class="animated-gradient"></div>
     {% include 'navbar.html' %}
     <div class="container my-5 card card-body">
         {% block content %}{% endblock %}
@@ -34,4 +43,12 @@
     <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
     {% include 'datatable.html' %}
 </body>
+<script>
+    gsap.to('.animated-gradient', {
+        backgroundPosition: '200% 200%',
+        duration: 10,
+        ease: 'power1.inOut',
+        repeat: -1
+    });
+</script>
 </html>

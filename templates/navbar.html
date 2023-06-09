@@ -1,5 +1,18 @@
 {% load static %}
 
+<style>
+    .active-white {
+        color: gray !important;
+        font-weight: bold !important;
+    }
+    .nav-small {
+        font-size: 18px;
+        color: gray !important;
+        font-family: 'Montserrat', sans-serif;
+        position: relative;
+    }
+</style>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand fw-bold" href="{% url 'home' %}">
@@ -12,20 +25,20 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'author-list' %}">Autores</a>
+                <li class="nav-item {% if request.resolver_match.url_name == 'author-list' %}active-white{% endif %}">
+                    <a class="navbar-brand nav-small" href="{% url 'author-list' %}">Autores</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'book-list' %}">Libros</a>
+                <li class="nav-item {% if request.resolver_match.url_name == 'book-list' %}active-white{% endif %}">
+                    <a class="navbar-brand nav-small" href="{% url 'book-list' %}">Libros</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'employee-list' %}">Empleados</a>
+                <li class="nav-item {% if request.resolver_match.url_name == 'employee-list' %}active-white{% endif %}">
+                    <a class="navbar-brand nav-small" href="{% url 'employee-list' %}">Empleados</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'member-list' %}">Socios</a>
+                <li class="nav-item {% if request.resolver_match.url_name == 'member-list' %}active-white{% endif %}">
+                    <a class="navbar-brand nav-small" href="{% url 'member-list' %}">Socios</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'lendbook-list' %}">Préstamos</a>
+                <li class="nav-item {% if request.resolver_match.url_name == 'lendbook-list' %}active-white{% endif %}">
+                    <a class="navbar-brand nav-small" href="{% url 'lendbook-list' %}">Préstamos</a>
                 </li>
             </ul>
         </div>

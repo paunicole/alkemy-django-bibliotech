@@ -11,7 +11,7 @@
     </thead>
     <tbody>
         {% for book in books %}
-        <tr>
+        <tr class="datatable-row">
             <td style="max-width:100px; overflow-x: auto;">{{ book.title }}</td>
             <td class="max-lines-cell" style="overflow-x: auto;">{{ book.description }}</td>
             <td>{{ book.isbn }}</td>
