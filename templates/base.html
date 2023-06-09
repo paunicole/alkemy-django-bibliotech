@@ -28,6 +28,7 @@
     }
 </style>
 <body>
+    <div class="animated-gradient"></div>
     {% include 'navbar.html' %}
     <div class="container my-5 card card-body">
         {% block content %}{% endblock %}
@@ -42,4 +43,12 @@
     <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
     {% include 'datatable.html' %}
 </body>
+<script>
+    gsap.to('.animated-gradient', {
+        backgroundPosition: '200% 200%',
+        duration: 10,
+        ease: 'power1.inOut',
+        repeat: -1
+    });
+</script>
 </html>
