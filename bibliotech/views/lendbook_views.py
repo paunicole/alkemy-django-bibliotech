@@ -18,7 +18,6 @@ def lendbook_create(request):
         "form": form,
         "submit": "Crear",
         "title": "Crear Préstamo",
-        "action": "btn-primary",
     }
     if request.method == "POST":
         form = LendBookForm(request.POST)
@@ -35,7 +34,6 @@ def lendbook_update(request, lendbook_id):
         "form": form,
         "submit": "Modificar",
         "title": "Modificar Préstamo",
-        "action": "btn-warning",
     }
 
     if request.method == "POST":

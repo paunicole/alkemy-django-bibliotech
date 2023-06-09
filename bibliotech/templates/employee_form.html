@@ -2,6 +2,8 @@
 
 {% block title %} {{ title }} {% endblock %}
 {% block content %}
+<h1>{{ title }}</h1>
+<hr>
 <form action="#" method="POST">
     {% csrf_token %}
     <div class="form-floating mb-3">
@@ -24,7 +26,7 @@
         {{ form.file_number.errors }}
     </div>
     <div style="padding: 16px;">
-        <input type="submit" class="btn {{ action }}" value="{{ submit }}">
+        <input type="submit" class="btn btn-primary" value="{{ submit }}">
         <a href="{% url 'employee-list' %}" class="btn btn-secondary">Volver a la Lista de Empleados</a>
     </div>
 </form>

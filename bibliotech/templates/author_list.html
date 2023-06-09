@@ -29,7 +29,11 @@
     }
 </style>
 
-<a href="{% url 'author-create' %}" class="btn btn-primary" style="margin-bottom: 10px;">Añadir Autor</a>
+<div class="d-flex justify-content-between align-items-center">
+    <h1>{{ title }}</h1>
+    <a href="{% url 'author-create' %}" class="btn btn-primary" style="margin-bottom: 10px;"><i class="fa-solid fa-plus"></i></a>
+</div>
+<hr>
 
 <div class="row">
     {% if authors %}

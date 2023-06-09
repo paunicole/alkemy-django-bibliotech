@@ -18,7 +18,6 @@ def author_create(request):
         "form": form,
         "submit": "Crear",
         "title": "Crear Autor",
-        "action": "btn-primary",
     }
     if request.method == "POST":
         form = AuthorForm(request.POST)
@@ -35,7 +34,6 @@ def author_update(request, author_id):
         "form": form,
         "submit": "Modificar",
         "title": "Modificar Autor",
-        "action": "btn-warning",
     }
 
     if request.method == "POST":
