@@ -2,6 +2,8 @@
 
 {% block title %} {{ title }} {% endblock %}
 {% block content %}
+<h1>{{ title }}</h1>
+<hr>
 <form action="#" method="POST">
     {% csrf_token %}
     <div class="form-floating mb-3">
