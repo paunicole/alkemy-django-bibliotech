@@ -3,6 +3,10 @@ from django.contrib.staticfiles.storage import staticfiles_storage
 from django.db import models
 from .author import Author
 from django.core.exceptions import ValidationError
+import os
+from django.conf import settings
+from PIL import Image
+from io import BytesIO
 
 
 def validate_isbn(isbn):
@@ -52,12 +56,25 @@ class Book(models.Model):
         return self.title
 
     def get_cover_image(self, size="L"):
-        url = f"https://covers.openlibrary.org/b/isbn/{self.isbn}-{size}.jpg"
+        local_path = os.path.join(
+            settings.BASE_DIR, "bibliotech/static/covers", f"{self.isbn}.jpg"
+        )
 
+        local_dir = os.path.dirname(local_path)
+
+        # Create the directory if it doesn't exist
+        os.makedirs(local_dir, exist_ok=True)
+
+        if os.path.exists(local_path):
+            return os.path.join(settings.STATIC_URL, f"covers/{self.isbn}.jpg")
+
+        url = f"https://covers.openlibrary.org/b/isbn/{self.isbn}-{size}.jpg"
         try:
             response = requests.get(url)
             response.raise_for_status()
-
-            return response.url
+            i = Image.open(BytesIO(response.content))
+            i.save(local_path)
+            return os.path.join(settings.STATIC_URL, f"covers/{self.isbn}.jpg")
         except requests.exceptions.HTTPError:
+            print(f"Error downloading cover for {self.isbn}")
             return get_default_cover_image()
