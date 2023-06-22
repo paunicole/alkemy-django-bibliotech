@@ -73,6 +73,7 @@ class Book(models.Model):
             response = requests.get(url)
             response.raise_for_status()
             i = Image.open(BytesIO(response.content))
+            i = i.convert('RGB')
             i.save(local_path)
             return os.path.join(settings.STATIC_URL, f"covers/{self.isbn}.jpg")
         except requests.exceptions.HTTPError:
