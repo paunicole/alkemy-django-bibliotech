@@ -6,6 +6,9 @@ db.sqlite3
 # Directorio virtualenv
 venv/
 
+# Imágenes de covers
+bibliotech/static/covers/
+
 # Archivos de configuración locales
 .env
 settings_local.py
